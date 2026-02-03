@@ -1,1 +1,16 @@
-<header>Header :)</header>
+---
+import ophiLogoWhite from "../assets/ophi-logo-white.svg";
+---
+
+<header class="bg-[#005b8e] text-white">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2">
+    <img src={ophiLogoWhite.src} alt="Logo de ophi" />
+
+    <nav class="flex gap-4 items-center font-semibold">
+      <a class="py-2 px-4 hover:underline" href="#us">Nosotros</a>
+      <a class="py-2 px-4 hover:underline" href="#whyOphi">¿Por qué ophi?</a>
+      <a class="py-2 px-4 hover:underline" href="#scanning">Escaneo</a>
+      <a class="py-2 px-4 hover:underline" href="#subscribe">¡Suscribite!</a>
+    </nav>
+  </div>
+</header>
