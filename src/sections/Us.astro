@@ -1,17 +1,23 @@
-<section id="us" class="pb-[100dvh] bg-red-500/25">
-  <div>
-    <img src="" alt="Logo..." />
-  </div>
-  <div>
-    <h2>Nosotros</h2>
-    <p>
-      Somos <span class="font-bold"></span>, <strong
-        >una app que busca ayudarte en tu consumo de alimentos basado en una
-        condición alimentaria o dieta</strong
-      >. Queremos garantizar tu tranquilidad y seguridad a la hora de elegirlos,
-      y que puedas <strong
-        >disfrutar de tus compras sin perder tiempo leyendo los ingredientes</strong
-      > de cada alimento que dudes en comprar.
-    </p>
+---
+import ophiLogoWhite from "../assets/ophi-logo-white.svg";
+---
+
+<section id="us" class="py-4 bg-[#005b8e] text-white">
+  <div class="grid grid-cols-2 max-w-4xl mx-auto">
+    <div class="grid place-content-center grid-cols-1 grid-rows-1 py-4">
+      <img class="h-full" src={ophiLogoWhite.src} alt="Logo de ophi" />
+    </div>
+    <div>
+      <h2 class="sr-only">Nosotros</h2>
+      <p>
+        Somos <span class="font-bold"></span>, <strong
+          >una app que busca ayudarte en tu consumo de alimentos basado en una
+          condición alimentaria o dieta</strong
+        >. Queremos garantizar tu tranquilidad y seguridad a la hora de
+        elegirlos, y que puedas <strong
+          >disfrutar de tus compras sin perder tiempo leyendo los ingredientes</strong
+        > de cada alimento que dudes en comprar.
+      </p>
+    </div>
   </div>
 </section>
