@@ -1,22 +1,27 @@
-<section id="whyOphi" class="pb-[100dvh] bg-pink-500/25">
-  <h2>¿Por qué ophi?</h2>
+---
+import Card from "../components/Card.astro";
+---
 
-  <div>
-    <article>
-      <h3>100% personalizada</h3>
-      <p>Elegí tu propia condición alimentaria o dieta.</p>
-    </article>
-    <article>
-      <h3>Segura</h3>
-      <p>Basada en perfiles médicos y listas validadas.</p>
-    </article>
-    <article>
-      <h3>Simple</h3>
-      <p>Escaneá el código de barras y ¡listo!</p>
-    </article>
-    <article>
-      <h3>Productos nacionales</h3>
-      <p>Contamos con todos los productos nacionales del mercado.</p>
-    </article>
+<section id="whyOphi" class="py-8">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-center text-8xl">
+      ¿Por qué <span class="font-kalon text-[#005b8e]">ophi</span>?
+    </h2>
+
+    <div class="grid grid-cols-4 gap-4 mt-12">
+      <Card
+        title="100% personalizada"
+        body="Elegí tu propia condición alimentaria o dieta."
+      />
+      <Card
+        title="Segura"
+        body="Basada en perfiles médicos y listas validadas."
+      />
+      <Card title="Simple" body="Escaneá el código de barras y ¡listo!" />
+      <Card
+        title="Productos nacionales"
+        body="Contamos con todos los productos nacionales del mercado."
+      />
+    </div>
   </div>
 </section>

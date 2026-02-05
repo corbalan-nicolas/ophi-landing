@@ -1,0 +1,33 @@
+---
+import logotypeLight from "../assets/logotype-light.png";
+
+const { title, body } = Astro.props;
+---
+
+<article class="text-white p-4">
+  <h3 class="text-center text-xl mt-8 mb-2">{title}</h3>
+  <p class="text-sm">{body}</p>
+</article>
+
+<style>
+  article {
+    position: relative;
+    border-radius: 10px;
+
+    background: #005b8e url("/src/assets/logotype-light.png") center center
+      no-repeat;
+    background-size: contain;
+  }
+
+  article::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    transform: rotateZ(5deg);
+    background-color: #79a7c1;
+    border-radius: 10px;
+  }
+</style>
