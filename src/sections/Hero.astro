@@ -1,10 +1,57 @@
-<div class="pb-[100dvh] bg-pink-500/25">
-  <div>
-    <h1>Elegí, Escaneá, Disfrutá.</h1>
-    <a href="#">Descargar App</a>
-    <p>¡Disponible en Google Play y App Store!</p>
-  </div>
-  <div>
-    <img src="" alt="Mockup..." />
+---
+import mockupHomeScreen from "../assets/mockups/home-view.png";
+---
+
+<div id="hero">
+  <span id="gradient-left"></span>
+  <span id="gradient-right"></span>
+  <div
+    class="grid grid-cols-[75fr_25fr] max-w-5xl mx-auto min-h-150 items-center"
+  >
+    <div class="text-white bg-[#005b8e] mb-30">
+      <h1 class="text-5xl mb-6">Elegí, Escaneá, Disfrutá.</h1>
+      <a class="rounded-full bg-[#009161] py-2 px-4 font-bold" href="#"
+        >Descargar App</a
+      >
+      <p class="inline">¡Disponible en Google Play y App Store!</p>
+    </div>
+    <div>
+      <img
+        src={mockupHomeScreen.src}
+        alt="Pantalla de inicio de la aplicación"
+      />
+    </div>
   </div>
 </div>
+
+<style>
+  #hero {
+    /* background: linear-gradient(#005b8e 378px, transparent 0%); */
+    /* background: linear-gradient(#f5f5f5 260px, #005b8e 260px 542px, #f5f5f5 0%); */
+  }
+
+  /* Left gradient */
+  #gradient-left {
+    position: absolute;
+    z-index: -1;
+    width: 50%;
+    height: 600px;
+
+    background: linear-gradient(#005b8e 378px, transparent 0%);
+  }
+
+  #gradient-right {
+    position: absolute;
+    z-index: -1;
+    width: 50%;
+    height: 600px;
+    right: 0;
+
+    background: linear-gradient(#f5f5f5 260px, #005b8e 260px 542px, #f5f5f5 0%);
+  }
+
+  #hero > div {
+    background: #f5f5f5 url("../assets/hero-bg.svg") left top no-repeat;
+    background-size: cover;
+  }
+</style>
