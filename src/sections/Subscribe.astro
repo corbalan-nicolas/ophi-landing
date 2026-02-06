@@ -1,21 +1,35 @@
-<section id="subscribe" class="pb-[100dvh] bg-pink-500/25">
-  <form action="#" method="post">
-    <h2>¡Suscribite!</h2>
-    <p>No te pierdas ningún descuento ni promociones.</p>
+---
+import mockupLoadingScreen from "../assets/mockups/loading-view.png";
+---
 
+<section id="subscribe" class="py-4 bg-[#005b8e] text-white">
+  <div class="grid grid-cols-[75fr_25fr] gap-4 max-w-5xl mx-auto">
+    <form class="self-center" action="#" method="post">
+      <h2 class="text-center text-6xl mb-4">¡Suscribite!</h2>
+
+      <p class="mb-4">No te pierdas ningún descuento ni promociones.</p>
+
+      <div class="mb-4">
+        <input
+          id="email"
+          class="bg-white rounded-t py-2 px-4 w-full placeholder:text-black/60 border-b border-b-[#009161]"
+          type="email"
+          name="email"
+          aria-label="Correo electrónico"
+          placeholder="Ingresá tu correo"
+        />
+      </div>
+
+      <button
+        class="rounded-full bg-[#009161] py-1 px-4 font-bold"
+        type="submit">Enviar</button
+      >
+    </form>
     <div>
-      <label for="email">Correo electrónico</label>
-      <input
-        id="email"
-        type="email"
-        name="email"
-        placeholder="Ingresá tu correo"
+      <img
+        src={mockupLoadingScreen.src}
+        alt="Celular con la aplicación de ophi abierta"
       />
     </div>
-
-    <button type="submit">Enviar</button>
-  </form>
-  <div>
-    <img src="" alt="Mockup..." />
   </div>
 </section>
