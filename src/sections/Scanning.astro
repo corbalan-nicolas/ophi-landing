@@ -1,14 +1,116 @@
-<section id="scanning" class="pb-[100dvh] bg-red-500/25">
-  <div>
-    <img src="" alt="Mockup..." />
-  </div>
-  <div>
-    <h2>Escaneo</h2>
-    <ol>
-      <li>Elegí un producto.</li>
-      <li>Entrá a la función de escanear.</li>
-      <li>Escaneá el código de barras.</li>
-      <li>Sabé si es apto para tu consumo.</li>
-    </ol>
+---
+import mockupScannerScreen from "../assets/mockups/scanner-view.png";
+---
+
+<section id="scanning">
+  <div class="grid grid-cols-2 max-w-5xl mx-auto items-center pt-30 pb-40">
+    <span class="claw-top"></span>
+    <span class="claw-bottom"></span>
+
+    <div>
+      <img
+        class="h-140 mx-auto"
+        src={mockupScannerScreen.src}
+        alt="Pantalla de escaneo de la aplicación"
+      />
+    </div>
+    <div>
+      <h2 class="sr-only">Escaneo</h2>
+      <ol class="text-white">
+        <li>Elegí un producto.</li>
+        <li>Entrá a la función de escanear.</li>
+        <li>Escaneá el código de barras.</li>
+        <li>Sabé si es apto para tu consumo.</li>
+      </ol>
+    </div>
   </div>
 </section>
+
+<style>
+  /* https://www.geeksforgeeks.org/css/how-to-customize-the-numbers-of-an-ordered-list-using-css/ */
+  ol {
+    counter-reset: num;
+
+    li {
+      counter-increment: num;
+
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      &::before {
+        content: counter(num);
+
+        display: grid;
+        place-content: center;
+
+        width: 2em;
+        height: 2em;
+
+        border-radius: 3em;
+        background-color: #009161;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  section > div {
+    position: relative;
+    z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -10;
+
+      background-color: #005b8e;
+      clip-path: ellipse(100% 102% at 100% 100%);
+    }
+  }
+
+  /* GREEN CLAWS */
+  .claw-top {
+    background: url("../assets/green-claw-top.svg") center center no-repeat;
+    background-size: contain;
+    /* background-position-x: right; */
+    position: absolute;
+    /* border: 5px solid red; */
+    width: 100%;
+    height: 224px;
+    top: -74px;
+    left: 2rem;
+    rotate: 180deg;
+  }
+
+  .claw-bottom {
+    background: url("../assets/green-claw-top.svg") center center no-repeat;
+    background-size: contain;
+    /* background-position-x: left; */
+    position: absolute;
+    /* border: 5px solid red; */
+    width: 100%;
+    height: 224px;
+    bottom: -74px;
+    right: 2rem;
+  }
+
+  /* RIGHT SIDE BLUE (AFTER 1024PX) */
+  @media (min-width: 1024px) {
+    section {
+      --max-container-size: 900px;
+      --section-spaces: calc((100dvw - var(--max-container-size)) / 2);
+      --section-space-container: calc(
+        var(--section-spaces) + var(--max-container-size)
+      );
+
+      background: linear-gradient(
+        90deg,
+        transparent var(--section-space-container),
+        #005b8e 0%
+      );
+    }
+  }
+</style>
