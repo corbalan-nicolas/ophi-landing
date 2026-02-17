@@ -1,16 +1,58 @@
 ---
 import ophiLogoWhite from "../assets/ophi-logo-white.svg";
+
+import MenuIcon from "../components/icons/MenuIcon.astro";
+import MainNavigation from "../components/MainNavigation.astro";
 ---
 
 <header class="bg-[#005b8e] text-white">
   <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2">
     <img src={ophiLogoWhite.src} alt="Logo de ophi" />
 
-    <nav class="flex gap-4 items-center font-semibold">
-      <a class="py-2 px-4 hover:underline" href="#us">Nosotros</a>
-      <a class="py-2 px-4 hover:underline" href="#whyOphi">¿Por qué ophi?</a>
-      <a class="py-2 px-4 hover:underline" href="#scanning">Escaneo</a>
-      <a class="py-2 px-4 hover:underline" href="#subscribe">¡Suscribite!</a>
-    </nav>
+    <button
+      id="menu-btn"
+      class="md:hidden p-3 cursor-pointer"
+      aria-label="Abrir / Cerrar menú"
+      aria-controls="menu"
+      aria-expanded="false"><MenuIcon /></button
+    >
+
+    <MainNavigation
+      className="max-md:hidden flex gap-4 items-center font-semibold"
+    />
+  </div>
+
+  <div id="menu" class="hidden border-white/20">
+    <MainNavigation
+      className="grid text-center font-semibold overflow-hidden"
+    />
   </div>
 </header>
+
+<script>
+  const menuBtn = document.querySelector("#menu-btn");
+  const menu = document.querySelector("#menu");
+
+  menuBtn?.addEventListener("click", toggleMenu);
+
+  function toggleMenu() {
+    const ariaExpanded = menu?.classList.toggle("active");
+
+    menuBtn?.setAttribute("aria-expanded", ariaExpanded ? "true" : "false");
+  }
+</script>
+
+<style>
+  @media (width < 48rem) {
+    #menu.active {
+      grid-template-rows: 1fr;
+    }
+
+    #menu {
+      display: grid;
+      grid-template-rows: 0fr;
+
+      transition: grid-template-rows 300ms;
+    }
+  }
+</style>
