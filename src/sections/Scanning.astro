@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import mockupScannerScreen from "../assets/mockups/scanner-view.png";
 ---
 
@@ -8,9 +9,9 @@ import mockupScannerScreen from "../assets/mockups/scanner-view.png";
     <span class="claw-bottom"></span>
 
     <div>
-      <img
-        class="h-140 mx-auto"
-        src={mockupScannerScreen.src}
+      <Image
+        class="h-140 mx-auto w-auto"
+        src={mockupScannerScreen}
         alt="Pantalla de escaneo de la aplicación"
       />
     </div>

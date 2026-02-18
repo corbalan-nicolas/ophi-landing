@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+
+const { title = "Elegí, Escaneá y Disfrutá, con ophi" } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,7 +12,7 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Elegí, Escaneá y Disfrutá, con ophi</title>
+    <title>{title}</title>
     <meta
       name="description"
       content="La mejor aplicación para tener precaución con tus alimentos"

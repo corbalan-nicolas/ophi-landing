@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import mockupHomeScreen from "../assets/mockups/home-view.png";
 ---
 
@@ -16,8 +17,9 @@ import mockupHomeScreen from "../assets/mockups/home-view.png";
       <p class="inline">¡Disponible en Google Play y App Store!</p>
     </div>
     <div>
-      <img
-        src={mockupHomeScreen.src}
+      <Image
+        src={mockupHomeScreen}
+        loading="eager"
         alt="Pantalla de inicio de la aplicación"
       />
     </div>

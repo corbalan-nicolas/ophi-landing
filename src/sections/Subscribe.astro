@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import mockupLoadingScreen from "../assets/mockups/loading-view.png";
 ---
 
@@ -26,8 +27,8 @@ import mockupLoadingScreen from "../assets/mockups/loading-view.png";
       >
     </form>
     <div>
-      <img
-        src={mockupLoadingScreen.src}
+      <Image
+        src={mockupLoadingScreen}
         alt="Celular con la aplicación de ophi abierta"
       />
     </div>
