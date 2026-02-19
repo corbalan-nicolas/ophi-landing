@@ -1,21 +1,29 @@
 ---
 import { Image } from "astro:assets";
 import mockupScannerScreen from "../assets/mockups/scanner-view.png";
+import mockupScannerScreenSmall from "../assets/mockups/scanner-view-small.webp";
 ---
 
-<section id="scanning">
-  <div class="grid grid-cols-2 max-w-5xl mx-auto items-center pt-30 pb-40">
+<section id="scanning" class="overflow-x-clip">
+  <div
+    class="flex flex-col sm:flex-row max-w-5xl mx-auto items-center py-8 sm:py-30 md:py-40 lg:py-50"
+  >
     <span class="claw-top"></span>
     <span class="claw-bottom"></span>
 
-    <div>
+    <div class="sm:w-[50%]">
       <Image
-        class="h-140 mx-auto w-auto"
+        class="sm:hidden w-[75%] mx-auto"
+        src={mockupScannerScreenSmall}
+        alt="Pantalla de escaneo de la aplicación"
+      />
+      <Image
+        class="max-sm:hidden max-h-140 mx-auto w-auto"
         src={mockupScannerScreen}
         alt="Pantalla de escaneo de la aplicación"
       />
     </div>
-    <div>
+    <div class="p-4">
       <h2 class="sr-only">Escaneo</h2>
       <ol class="text-white">
         <li>Elegí un producto.</li>
@@ -73,29 +81,50 @@ import mockupScannerScreen from "../assets/mockups/scanner-view.png";
   }
 
   /* GREEN CLAWS */
-  .claw-top {
-    background: url("../assets/green-claw-top.svg") center center no-repeat;
-    background-size: contain;
-    /* background-position-x: right; */
+  .claw-top,
+  .claw-bottom {
+    --_claw-height: calc(100% * 224 / 960);
+    --_bg: url("");
+
     position: absolute;
-    /* border: 5px solid red; */
+    left: 0;
+
     width: 100%;
-    height: 224px;
-    top: -74px;
-    left: 2rem;
-    rotate: 180deg;
+    aspect-ratio: 960/224;
+
+    background: transparent var(--_bg) center center no-repeat;
+    background-size: cover;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+
+      left: 100%;
+      /* transform: translateX(64rem); */
+      top: -51.5%;
+
+      background: transparent url("../assets/green-claw-end.png") center center
+        no-repeat;
+      background-size: cover;
+
+      /* Aspect ratio: 186/456 */
+      aspect-ratio: 186/456;
+      height: calc(100% * 456 / 224);
+      /* border: 1px solid black; */
+    }
+  }
+
+  .claw-top {
+    --_bg: url("../assets/green-claw.png");
+    top: calc(var(--_claw-height) / -4);
   }
 
   .claw-bottom {
-    background: url("../assets/green-claw-top.svg") center center no-repeat;
-    background-size: contain;
-    /* background-position-x: left; */
-    position: absolute;
-    /* border: 5px solid red; */
-    width: 100%;
-    height: 224px;
-    bottom: -74px;
-    right: 2rem;
+    --_bg: url("../assets/green-claw.png");
+    bottom: calc(var(--_claw-height) / -4);
+
+    transform: rotateZ(180deg);
   }
 
   /* RIGHT SIDE BLUE (AFTER 1024PX) */
