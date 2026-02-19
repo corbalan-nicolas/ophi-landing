@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "kalon";
-  src: url("/public/Kalon-Regular.ttf") format("truetype");
+  src: url("/public/kalon.otf") format("OpenType");
   font-weight: normal;
   font-style: normal;
 }
