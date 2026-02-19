@@ -11,7 +11,9 @@ const spaUrl = import.meta.env.PUBLIC_SPA_URL;
   <div
     class="grid md:grid-cols-[70fr_30fr] max-w-5xl mx-auto min-h-150 items-center px-4"
   >
-    <div class="text-white bg-[#005b8e] mb-30">
+    <div
+      class="text-white bg-[#005b8e] mb-30 animate-slide-in-left animate-duration-500"
+    >
       <h1 class="text-5xl mb-6">Elegí, Escaneá, Disfrutá.</h1>
 
       <p class="leading-9">
@@ -20,7 +22,7 @@ const spaUrl = import.meta.env.PUBLIC_SPA_URL;
         > ¡Próximamente disponible en Google Play y App Store!
       </p>
     </div>
-    <div class="max-md:hidden">
+    <div class="max-md:hidden animate-slide-in-right animate-duration-500">
       <Image
         src={mockupHomeScreen}
         class="max-h-130 w-auto"
