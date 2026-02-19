@@ -8,7 +8,7 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
   <div
     class="flex flex-col-reverse sm:flex-row items-center gap-4 max-w-5xl mx-auto px-4"
   >
-    <form class="sm:w-[75%]" action="#" method="post">
+    <form id="subscribe-form" class="sm:w-[75%]" action="#" method="post">
       <h2 class="text-center text-6xl mb-4">¡Suscribite!</h2>
 
       <p class="mb-4">No te pierdas ningún descuento ni promociones.</p>
@@ -16,15 +16,18 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
       <div class="mb-4">
         <input
           id="email"
-          class="bg-white rounded-t py-2 px-4 w-full placeholder:text-black/60 border-b border-b-[#009161]"
-          type="email"
+          class="bg-white rounded-t py-2 px-4 w-full placeholder:text-black/60 text-black border-b border-b-[#009161]"
+          type="text"
           name="email"
           aria-label="Correo electrónico"
           placeholder="Ingresá tu correo"
         />
+
+        <p id="subscribe-form-feedback" class="mt-1"></p>
       </div>
 
       <button
+        id="subscribe-form-btn"
         class="rounded-full bg-[#009161] py-1 px-4 font-bold"
         type="submit">Enviar</button
       >
@@ -43,3 +46,74 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
     </div>
   </div>
 </section>
+
+<script>
+  let loading = false;
+  import axios from "../config/axios";
+
+  const apiUrl = import.meta.env.PUBLIC_BACK_URL ?? "http://localhost:8000";
+  const subscribeForm = document.querySelector("#subscribe-form");
+  const subscribeFormBtn = document.querySelector("#subscribe-form-btn");
+  const subscribeFormFeedback = document.querySelector(
+    "#subscribe-form-feedback",
+  );
+
+  subscribeForm?.addEventListener("submit", handleSubmit);
+
+  async function handleSubmit(e: Event) {
+    e.preventDefault();
+    if (loading) return;
+    subscribeFormFeedback.innerText = "";
+
+    // Validation
+    const email = document.querySelector("#email").value.trim().toLowerCase();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+      console.log("email invalido");
+      subscribeFormFeedback.innerText =
+        "La dirección de correo electrónico no es una dirección válida";
+      return;
+    }
+
+    // Petition
+    subscribeFormBtn!.textContent = "Estableciendo conexión con el servidor...";
+    loading = true;
+    try {
+      await askForCsrfCookies();
+      subscribeFormBtn.innerText =
+        "Registrando dirección de correo electrónico";
+      await registerEmail(email);
+      subscribeFormFeedback.innerText = "¡Listo, Tu email ya fué registrado!";
+    } catch (th) {
+      subscribeFormFeedback.innerText =
+        "Algo salió mal, intentalo de nuevo más tarde";
+    }
+    loading = false;
+    subscribeFormBtn!.textContent = "Enviar";
+  }
+
+  async function askForCsrfCookies() {
+    const response = await axios.get("/sanctum/csrf-cookie");
+
+    if (response.status === 204) {
+      return true;
+    }
+
+    throw new Error("No se pudo establecer conexión con el servidor");
+  }
+
+  async function registerEmail(email: string) {
+    const response = await axios.post(`${apiUrl}/api/subscribe-email/`, {
+      email,
+    });
+
+    if (response.status === 204) {
+      return true;
+    }
+
+    throw new Error(
+      "No se pudo registrar el correo electrónico por motivos desconocidos",
+    );
+  }
+</script>
