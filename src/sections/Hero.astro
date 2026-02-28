@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import mockupHomeScreen from "../assets/mockups/home-view.png";
+import mockupHomeScreen from "../assets/mockups/home-view.webp";
+import mockupHomeScreenSmall from "../assets/mockups/home-view-small.webp";
 
 const spaUrl = import.meta.env.PUBLIC_SPA_URL;
 ---
@@ -9,12 +10,13 @@ const spaUrl = import.meta.env.PUBLIC_SPA_URL;
   <span id="gradient-left"></span>
   <span id="gradient-right"></span>
   <div
-    class="grid md:grid-cols-[70fr_30fr] max-w-5xl mx-auto min-h-150 items-center px-4"
+    class="grid sm:grid-cols-[70fr_30fr] max-w-5xl mx-auto min-h-150 items-center px-4"
   >
     <div
-      class="text-white bg-[#005b8e] mb-30 animate-slide-in-left animate-duration-500"
+      class="text-white bg-[#005b8e] max-sm:mt-50 mb-10 sm:mb-30 animate-slide-in-left animate-duration-500"
     >
-      <h1 class="text-5xl mb-6">Elegí, Escaneá, Disfrutá.</h1>
+      <h1 class="sr-only">ophi</h1>
+      <p class="h1 text-5xl mb-6">Elegí, Escaneá, Disfrutá.</p>
 
       <p class="leading-9">
         <a class="rounded-full bg-[#009161] py-2 px-4 font-bold" href={spaUrl}
@@ -22,10 +24,16 @@ const spaUrl = import.meta.env.PUBLIC_SPA_URL;
         > ¡Próximamente disponible en Google Play y App Store!
       </p>
     </div>
-    <div class="max-md:hidden animate-slide-in-right animate-duration-500">
+    <div class="animate-slide-in-right animate-duration-500">
+      <Image
+        src={mockupHomeScreenSmall}
+        class="sm:hidden max-w-[60%] mx-auto"
+        loading="eager"
+        alt="Pantalla de inicio de la aplicación"
+      />
       <Image
         src={mockupHomeScreen}
-        class="max-h-130 w-auto"
+        class="max-sm:hidden max-h-130 w-auto"
         loading="eager"
         alt="Pantalla de inicio de la aplicación"
       />

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import mockupLoadingScreen from "../assets/mockups/loading-view.png";
+import mockupLoadingScreen from "../assets/mockups/loading-view.webp";
 import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp";
 ---
 
@@ -89,10 +89,10 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
       subscribeFormBtn.innerText =
         "Registrando dirección de correo electrónico";
       await registerEmail(email);
-      subscribeFormFeedback.innerText = "¡Listo, Tu email ya fué registrado!";
+      subscribeFormFeedback.innerText = "¡Listo, Tu correo ya fué registrado!";
     } catch (th) {
       subscribeFormFeedback.innerText =
-        "Algo salió mal, intentalo de nuevo más tarde";
+        "Algo salió mal, por favor intentalo de nuevo más tarde";
     }
     loading = false;
     subscribeFormBtn!.textContent = "Enviar";

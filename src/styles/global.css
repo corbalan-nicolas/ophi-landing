@@ -23,6 +23,8 @@
 }
 
 @theme {
+  --breakpoint-xs: 24rem;
+
   --font-kalon: "kalon";
 
   --font-roboto-slab: "RobotoSlab";
@@ -39,6 +41,7 @@ p {
 }
 
 h1,
+.h1,
 h2,
 h3,
 h4,
