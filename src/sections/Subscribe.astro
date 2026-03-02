@@ -56,7 +56,6 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
   let loading = false;
   import axios from "../config/axios";
 
-  const apiUrl = import.meta.env.PUBLIC_BACK_URL ?? "http://localhost:8000";
   const subscribeForm = document.querySelector("#subscribe-form");
   const subscribeFormBtn = document.querySelector("#subscribe-form-btn");
   const subscribeFormFeedback = document.querySelector(
@@ -85,7 +84,6 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
     subscribeFormBtn!.textContent = "Estableciendo conexión con el servidor...";
     loading = true;
     try {
-      await askForCsrfCookies();
       subscribeFormBtn.innerText =
         "Registrando dirección de correo electrónico";
       await registerEmail(email);
@@ -108,17 +106,15 @@ import mockupLoadingScreenSmall from "../assets/mockups/loading-view-small.webp"
     throw new Error("No se pudo establecer conexión con el servidor");
   }
 
-  async function registerEmail(email: string) {
-    const response = await axios.post(`${apiUrl}/api/subscribe-email/`, {
+  async function registerEmail(email) {
+    const response = await axios.post("/api/subscribe-email", {
       email,
     });
 
-    if (response.status === 204) {
+    if (response.status === 204 || response.status === 200) {
       return true;
     }
 
-    throw new Error(
-      "No se pudo registrar el correo electrónico por motivos desconocidos",
-    );
+    throw new Error("No se pudo registrar el correo electrónico");
   }
 </script>
